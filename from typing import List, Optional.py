@@ -44,7 +44,7 @@ def criar_usuario(nome: str, email: str) -> Usuario:
         return novo_usuario
 
 
-# R - READ (Ler/Buscar)
+# R - READ (Ler/Buscar) # Você faz pesquisas utilizando a sessão do SQLAlchemy para buscar dados no banco de dados, transformando os resultados em objetos Python
 def listar_usuarios() -> List[Usuario]:
     with SessionLocal() as session:
         # No SQLAlchemy 2.0, usamos session.scalars() com select()
@@ -62,7 +62,7 @@ def buscar_usuario_por_id(usuario_id: int) -> Optional[Usuario]:
         return usuario
 
 
-# U - UPDATE (Atualizar)
+# U - UPDATE (Atualizar) # Você pega o objeto do banco de dados, altera o valor do atributo e salva fazendo o commit
 def atualizar_email_usuario(usuario_id: int, novo_email: str) -> Optional[Usuario]:
     with SessionLocal() as session:
         usuario = session.get(Usuario, usuario_id)
@@ -76,7 +76,7 @@ def atualizar_email_usuario(usuario_id: int, novo_email: str) -> Optional[Usuari
         return None
 
 
-# D - DELETE (Excluir)
+# D - DELETE (Excluir) # Você pega o objeto e o deleta usando a sessão
 def deletar_usuario(usuario_id: int) -> bool:
     with SessionLocal() as session:
         usuario = session.get(Usuario, usuario_id)
