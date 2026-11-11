@@ -33,7 +33,7 @@ Base.metadata.create_all(engine)
 # ==========================================
 
 
-# C - CREATE (Criar)
+# C - CREATE (Criar) # Você cria o objeto para adicioná-lo ao banco de dados
 def criar_usuario(nome: str, email: str) -> Usuario:
     with SessionLocal() as session:
         novo_usuario = Usuario(nome=nome, email=email)
